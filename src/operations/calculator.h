@@ -5,6 +5,11 @@
 
 namespace operations {
 namespace exceptions {
+namespace messages {
+    
+const std::string DIVIDED_BY_ZERO_MESSAGE = "You can't divide by zero.";
+
+} // namespace messages
     
 struct DividedByZeroException {
     std::string message;    

@@ -6,18 +6,18 @@ int Calculator::add(int num1, int num2) {
     return num1 + num2;
 }
 
-int subs(int num1, int num2) {
+int Calculator::subs(int num1, int num2) {
     return num1 - num2;
 }
 
-int mult(int num1, int num2) {
+int Calculator::mult(int num1, int num2) {
     return num1 * num2;
 }
 
-int div(int num1, int num2) {
+int Calculator::div(int num1, int num2) {
     if(num2 == 0) {
         exceptions::DividedByZeroException exception;
-        exception.message = "You can't divide " + std::to_string(num1) + " by zero.";
+        exception.message = exceptions::messages::DIVIDED_BY_ZERO_MESSAGE;
         throw exception;
     }
     return num1 / num2;
