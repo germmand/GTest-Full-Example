@@ -18,37 +18,66 @@ public:
 } // namespace
 
 TEST_F(CalculatorTest, ValidateAddition) {
-    EXPECT_EQ(operations::Calculator::add(5, 4), 9);
-    EXPECT_EQ(operations::Calculator::add(-5, 4), -1);
-    EXPECT_EQ(operations::Calculator::add(5, 0), 5);
+    // Arrange
+    int a = 5, b = 4;
+    int expected = a + b;
+
+    // Act
+    int result = operations::Calculator::add(a, b);
+
+    // Assert
+    EXPECT_EQ(result, expected);
 }
 
 TEST_F(CalculatorTest, ValidateSubtraction) {
-    EXPECT_EQ(operations::Calculator::subs(9, 9), 0);
-    EXPECT_EQ(operations::Calculator::subs(9, -9), 18);
-    EXPECT_EQ(operations::Calculator::subs(-9, 6), -15);
+    // Arrange
+    int a = 9, b = -6;
+    int expected = a - b;
+
+    // Act
+    int result = operations::Calculator::subs(a, b);
+    
+    // Assert
+    EXPECT_EQ(result, expected);
 }
 
 TEST_F(CalculatorTest, ValidateMultiplication) {
-    EXPECT_EQ(operations::Calculator::mult(2, 3), 6); 
-    EXPECT_EQ(operations::Calculator::mult(-2, 3), -6); 
-    EXPECT_EQ(operations::Calculator::mult(-3, -3), 9); 
+    // Arrange
+    int a = 2, b = 3;
+    int expected = a * b;
+
+    // Act
+    int result = operations::Calculator::mult(a, b);
+
+    // Assert
+    EXPECT_EQ(result, expected); 
 }
 
 TEST_F(CalculatorTest, ValidateDivision) {
-    EXPECT_EQ(operations::Calculator::div(6, 2), 3);
-    EXPECT_EQ(operations::Calculator::div(6, -2), -3);
-    EXPECT_EQ(operations::Calculator::div(-6, -2), 3);
+    // Arrange
+    int a = 6, b = 2;
+    int expected = a / b;
+
+    // Act
+    int result = operations::Calculator::div(a, b);
+    
+    // Assert
+    EXPECT_EQ(result, expected);
 }
 
 TEST_F(CalculatorTest, ValidateDivisionThrowException) {
     using namespace operations::exceptions;
     try {
-        int result = operations::Calculator::div(9, 0);
+        // Arrange
+        int a = 9, b = 0;
+
+        // Act
+        int result = operations::Calculator::div(a, b);
     } catch(DividedByZeroException exception) {
-        //SUCCEED();
+        // Assert
         EXPECT_EQ(exception.message, messages::DIVIDED_BY_ZERO_MESSAGE);
     } catch(...) {
         FAIL() << "Expected DividedByZeroException exception.";
     }
+    FAIL() << "Expected DividedByZeroException exception.";
 }
